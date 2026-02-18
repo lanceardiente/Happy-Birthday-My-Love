@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lance's Personal Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .images {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        img {
+            width: 220px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        /* Hover effect */
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* TEXT */
+        #text {
+            width: 320px;
+            font-size: 22px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        /* ACTIVE STATE */
+
+        .active .images {
+            transform: translateX(-180px);
+        }
+
+        .active #text {
+            opacity: 1;
+        }
+
+        /* Grow selected image */
+        .selected {
+            transform: scale(1.25);
+            z-index: 2;
+        }
+
+        /* Blur non-selected images */
+        .blur {
+            filter: blur(4px);
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" id="container">
+        <div class="images">
+            <img src="First pic.jpg" onclick="showText(this, 'This is my first memory!')">
+            <img src="First pic.jpg" onclick="showText(this, 'This is my second memory!')">
+        </div>
+
+        <div id="text"></div>
+    </div>
+
+    <script>
+        let currentImage = null;
+
+        function showText(image, message) {
+            const container = document.getElementById("container");
+            const textDiv = document.getElementById("text");
+            const images = document.querySelectorAll(".images img");
+
+            // If clicking same image → close
+            if (currentImage === image) {
+                container.classList.remove("active");
+                textDiv.innerHTML = "";
+
+                images.forEach(img => {
+                    img.classList.remove("selected");
+                    img.classList.remove("blur");
+                });
+
+                currentImage = null;
+            } 
+            else {
+                textDiv.innerHTML = message;
+                container.classList.add("active");
+
+                images.forEach(img => {
+                    img.classList.remove("selected");
+                    img.classList.remove("blur");
+
+                    if (img !== image) {
+                        img.classList.add("blur");
+                    }
+                });
+
+                image.classList.add("selected");
+                currentImage = image;
+            }
+        }
+    </script>
+
+</body>
+</html>

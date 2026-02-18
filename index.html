@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lance's Personal Page</title>
+    <title>HAPPY BIRTHDAY LOVE 🎉❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -10,6 +10,7 @@
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fbc2eb 100%);
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
 
         /* Header */
@@ -23,147 +24,194 @@
             font-weight: bold;
             color: #fff;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            z-index: 10;
+            z-index: 100;
         }
 
-        .container {
-            display: flex;
-            align-items: flex-start;
-            gap: 60px;
-            padding-top: 120px; /* space for header */
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .images {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        img {
-            width: 220px;
+        /* Floating images */
+        .floating-img {
+            position: absolute;
+            width: 150px;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.5s ease;
+            transition: transform 0.5s ease, filter 0.5s ease, left 0.5s ease, top 0.5s ease;
             box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
-        img:hover {
-            transform: scale(1.05);
+        .floating-img:hover {
+            transform: scale(1.2);
         }
 
-        /* Text */
-        #text {
-            width: 350px;
-            font-size: 20px;
-            color: #fff;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-        }
-
-        /* Active state */
-        .active .images {
-            transform: translateX(-180px);
-        }
-
-        .active #text {
-            opacity: 1;
-        }
-
-        /* Grow selected image */
         .selected {
-            transform: scale(1.25);
-            z-index: 2;
+            transform: scale(1.5) !important;
+            z-index: 200;
         }
 
-        /* Blur non-selected images */
         .blur {
             filter: blur(4px);
             opacity: 0.6;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-                padding-top: 80px;
-            }
+        #text {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 300px;
+            color: #fff;
+            font-size: 20px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 150;
+        }
 
+        #text.active {
+            opacity: 1;
+        }
+
+        /* Confetti & hearts */
+        .confetti, .heart {
+            position: absolute;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @media (max-width: 768px) {
             #text {
                 width: 90%;
+                left: 50%;
+                right: auto;
+                transform: translate(-50%, -50%);
                 text-align: center;
-                margin-top: 20px;
-            }
-
-            .active .images {
-                transform: translateX(0);
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>HAPPY BIRTHDAY LOVE 🎉❤️</header>
+<header>HAPPY BIRTHDAY LOVE 🎉❤️</header>
+<div id="text"></div>
 
-    <div class="container" id="container">
-        <div class="images">
-            <img src="images/First.jpg" onclick="showText(this, 'say Hi to this little one. My first baby. so cutie patootie. yun lang hehehe. pili ka na ulit ng bagong picture masyado ka lang cute dito <3 ')">
-            <img src="images/Christening.jpg" onclick="showText(this, 'Christening day ng baby kent natin ')">
-            <img src="images/Foundation.jpg" onclick="showText(this, 'Taraaaay! pang couple of the year lang ang kuha. HAHAHAHA')">
-            <img src="images/Grad.jpg" onclick="showText(this, 'One of the best milestone na nareach mo, Im so proud of you! ')">
-            <img src="images/KentBirth.jpg" onclick="showText(this, 'Your smile, so genuine na kahit pagod ka kakaire, you gave life to our angel. Thank you!')">
-            <img src="images/Marriage.jpg" onclick="showText(this, 'The moment you said..... YEEEES! rekta na agad sa huwes marriage!!!')">
-            <img src="images/family.jpg" onclick="showText(this, 'THE BULANHAGUI FAMILY! ang pamilya na tinanggap ako ng buong buo, thank you sa kanila kasi hinayaan nila akong mahalin ka palagi')">
-            <img src="images/firstouting.jpg" onclick="showText(this, 'Ito ata yung unang alis natin kasama side ko, jusko! kung maka hug no? hahaha love na love ka nyan uy!')">
-            <img src="images/kiss.jpg" onclick="showText(this, 'Ay Taray! grabe maka kiss ang koya, well potek ano pa nga ba hahaha, sobrang solid kasi nahalikan kita sa harap ng family natin hahaha')">
-            <img src="images/ring.jpg" onclick="showText(this, 'Taray! pinakasalan ako.... ano ka dyan, away away yan lagi pero nagpakasal')">
-            <img src="images/smile.jpg" onclick="showText(this, 'Hello Baby girl! Nene days eh hahaha, pero wag ka love ko yan! papakasalan ko pa nga yan eh')">
-            <img src="images/pic2.jpg" onclick="showText(this, 'Napasama lang talaga to eh, pero napaisip ako.... ang tagal na natin no? 13 years ng buhay natin magkasama tayo. sana di ka magsawa sa mga pagsubok na haharapin pa natin')">
-            <img src="images/eyes.jpg" onclick="showText(this, 'Wala lang..... sinama ko to kasi i like how you look at me. full of love kahit madami akong kasalanan. Tsaka never ako magsasawa sa titig mo!!!!')">
-            <img src="images/Second.jpg" onclick="showText(this, 'Ito yung unang video call natin HAHAHAHA! nene and totoy days. Kitang kita mo naman siguro na sobrang napapangiti mo ako kapag nakikita kita. always remember na simula una palang ikaw ang dahilan ng ngiti ko')">
-            <img src="images/smile2.jpg" onclick="showText(this, 'Another smile pic to. nakaka adik kasi eh, simula una hanggang sa pagtanda di ako magsasawa sayo')">
-            <img src="images/someday.jpg" onclick="showText(this, 'Ito talaga! susunod na to, ang ating sariling business. Looking forward sa mga maaabot natin')">
-            <img src="images/wacky.jpg" onclick="showText(this, 'If we can turn back time, i just want to make it right always, but you will always be my woman')">
-        </div>
+<!-- Floating Images -->
+<img src="images/First.jpg" class="floating-img" onclick="showText(this, 'say Hi to this little one. My first baby. so cutie patootie. yun lang hehehe. pili ka na ulit ng bagong picture masyado ka lang cute dito <3 ')">
+<img src="images/Christening.jpg" class="floating-img" onclick="showText(this, 'Christening day ng baby kent natin')">
+<img src="images/Foundation.jpg" class="floating-img" onclick="showText(this, 'Taraaaay! pang couple of the year lang ang kuha. HAHAHAHA')">
+<img src="images/Grad.jpg" class="floating-img" onclick="showText(this, 'One of the best milestone na nareach mo, Im so proud of you!')">
+<img src="images/KentBirth.jpg" class="floating-img" onclick="showText(this, 'Your smile, so genuine na kahit pagod ka kakaire, you gave life to our angel. Thank you!')">
+<img src="images/Marriage.jpg" class="floating-img" onclick="showText(this, 'The moment you said..... YEEEES! rekta na agad sa huwes marriage!!!')">
+<img src="images/family.jpg" class="floating-img" onclick="showText(this, 'THE BULANHAGUI FAMILY! ang pamilya na tinanggap ako ng buong buo, thank you sa kanila kasi hinayaan nila akong mahalin ka palagi')">
+<img src="images/firstouting.jpg" class="floating-img" onclick="showText(this, 'Ito ata yung unang alis natin kasama side ko, jusko! kung maka hug no? hahaha love na love ka nyan uy!')">
+<img src="images/kiss.jpg" class="floating-img" onclick="showText(this, 'Ay Taray! grabe maka kiss ang koya, well potek ano pa nga ba hahaha, sobrang solid kasi nahalikan kita sa harap ng family natin hahaha')">
+<img src="images/ring.jpg" class="floating-img" onclick="showText(this, 'Taray! pinakasalan ako.... ano ka dyan, away away yan lagi pero nagpakasal')">
+<img src="images/smile.jpg" class="floating-img" onclick="showText(this, 'Hello Baby girl! Nene days eh hahaha, pero wag ka love ko yan! papakasalan ko pa nga yan eh')">
+<img src="images/pic2.jpg" class="floating-img" onclick="showText(this, 'Napasama lang talaga to eh, pero napaisip ako.... ang tagal na natin no? 13 years ng buhay natin magkasama tayo. sana di ka magsawa sa mga pagsubok na haharapin pa natin')">
+<img src="images/eyes.jpg" class="floating-img" onclick="showText(this, 'Wala lang..... sinama ko to kasi i like how you look at me. full of love kahit madami akong kasalanan. Tsaka never ako magsasawa sa titig mo!!!!')">
+<img src="images/Second.jpg" class="floating-img" onclick="showText(this, 'Ito yung unang video call natin HAHAHAHA! nene and totoy days. Kitang kita mo naman siguro na sobrang napapangiti mo ako kapag nakikita kita. always remember na simula una palang ikaw ang dahilan ng ngiti ko')">
+<img src="images/smile2.jpg" class="floating-img" onclick="showText(this, 'Another smile pic to. nakaka adik kasi eh, simula una hanggang sa pagtanda di ako magsasawa sayo')">
+<img src="images/someday.jpg" class="floating-img" onclick="showText(this, 'Ito talaga! susunod na to, ang ating sariling business. Looking forward sa mga maaabot natin')">
+<img src="images/wacky.jpg" class="floating-img" onclick="showText(this, 'If we can turn back time, i just want to make it right always, but you will always be my woman')">
 
-        <div id="text"></div>
-    </div>
+<script>
+    let currentImage = null;
+    const images = document.querySelectorAll('.floating-img');
+    const textDiv = document.getElementById('text');
 
-    <script>
-        let currentImage = null;
+    // Assign initial random positions and velocities
+    const imageData = [];
+    images.forEach(img => {
+        const data = {
+            el: img,
+            x: Math.random() * (window.innerWidth - 150),
+            y: Math.random() * (window.innerHeight - 150 - 100) + 100,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5
+        };
+        img.style.left = data.x + 'px';
+        img.style.top = data.y + 'px';
+        imageData.push(data);
+    });
 
-        function showText(image, message) {
-            const container = document.getElementById("container");
-            const textDiv = document.getElementById("text");
-            const images = document.querySelectorAll(".images img");
+    function animate() {
+        imageData.forEach(data => {
+            if (!data.el.classList.contains('selected')) {
+                data.x += data.vx;
+                data.y += data.vy;
+                // Bounce off edges
+                if (data.x < 0 || data.x > window.innerWidth - 150) data.vx *= -1;
+                if (data.y < 100 || data.y > window.innerHeight - 150) data.vy *= -1;
+                data.el.style.left = data.x + 'px';
+                data.el.style.top = data.y + 'px';
+            }
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
 
-            // If clicking same image → close
-            if (currentImage === image) {
-                container.classList.remove("active");
-                textDiv.innerHTML = "";
-                images.forEach(img => {
-                    img.classList.remove("selected");
-                    img.classList.remove("blur");
-                });
-                currentImage = null;
-            } 
-            else {
-                textDiv.innerHTML = message;
-                container.classList.add("active");
-                images.forEach(img => {
-                    img.classList.remove("selected");
-                    img.classList.remove("blur");
-                    if (img !== image) img.classList.add("blur");
-                });
-                image.classList.add("selected");
-                currentImage = image;
+    function showText(image, message) {
+        if (currentImage === image) {
+            images.forEach(img => {
+                img.classList.remove('selected');
+                img.classList.remove('blur');
+            });
+            textDiv.classList.remove('active');
+            textDiv.innerHTML = '';
+            currentImage = null;
+        } else {
+            textDiv.innerHTML = message;
+            textDiv.classList.add('active');
+
+            images.forEach(img => {
+                img.classList.remove('selected');
+                img.classList.remove('blur');
+                if (img !== image) img.classList.add('blur');
+            });
+
+            image.classList.add('selected');
+            currentImage = image;
+        }
+    }
+
+    // Confetti / Hearts
+    function createParticles(type) {
+        const particle = document.createElement('div');
+        particle.classList.add(type);
+        particle.style.left = Math.random() * window.innerWidth + 'px';
+        particle.style.top = '-20px';
+        particle.style.fontSize = (Math.random() * 24 + 12) + 'px';
+        particle.innerHTML = type === 'heart' ? '❤️' : '🎉';
+        document.body.appendChild(particle);
+
+        let y = -20;
+        const speed = Math.random() * 2 + 1;
+        const sway = (Math.random() - 0.5) * 2;
+
+        function fall() {
+            y += speed;
+            particle.style.top = y + 'px';
+            particle.style.left = (parseFloat(particle.style.left) + sway) + 'px';
+            if (y > window.innerHeight) {
+                particle.remove();
+            } else {
+                requestAnimationFrame(fall);
             }
         }
-    </script>
+        fall();
+    }
+
+    setInterval(() => {
+        createParticles('confetti');
+        createParticles('heart');
+    }, 300);
+
+    window.addEventListener('resize', () => {
+        imageData.forEach(data => {
+            if (!data.el.classList.contains('selected')) {
+                data.x = Math.random() * (window.innerWidth - 150);
+                data.y = Math.random() * (window.innerHeight - 150 - 100) + 100;
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
